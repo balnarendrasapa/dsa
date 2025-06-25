@@ -14,15 +14,15 @@ class TimeMap:
     def get(self, key: str, timestamp: int) -> str:
         res = ""
         values = self.d.get(key, [])
-        l = 0
-        r = len(values) - 1
-        while l <= r:
-            m = (l + r) // 2
-            if values[m][0] <= timestamp:
-                res = values[m][1]
-                l = m + 1
+        start = 0
+        end = len(values) - 1
+        while start <= end:
+            mid = (start + end) // 2
+            if values[mid][0] <= timestamp:
+                res = values[mid][1]
+                start = mid + 1
             else:
-                r = m - 1
+                end = mid - 1
         return res
         
 
