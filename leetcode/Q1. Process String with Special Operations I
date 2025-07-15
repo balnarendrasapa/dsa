@@ -1,0 +1,21 @@
+import string
+
+class Solution:
+    def processStr(self, s: str) -> str:
+        result = ""
+
+        for i in s:
+            if ord("a") <= ord(i) <= ord("z"):
+                result += i
+
+            if i == "*" and len(result) > 0 and ord("a") <= ord(result[-1]) <= ord("z"):
+                result = result[:-1]
+
+            if i == "#":
+                result = result * 2
+
+            if i == "%":
+                result = result[::-1]
+
+
+        return result
