@@ -42,3 +42,21 @@ class Solution:
                     visited = bfs(visited, i, j, m, n, grid)
 
         return count
+
+
+from collections import deque
+
+def bfs(visited, i, j, m, n, grid):
+    stack = deque()
+    stack.append([i, j])
+    visited[i][j] = True  # ✅ Mark as visited when enqueuing
+
+    while stack:
+        x, y = stack.popleft()
+
+        for dx, dy in [(-1,0), (1,0), (0,-1), (0,1)]:
+            nx, ny = x + dx, y + dy
+
+            if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == "1" and not visited[nx][ny]:
+                visited[nx][ny] = True  # ✅ Mark visited here
+                stack.append([nx, ny])
