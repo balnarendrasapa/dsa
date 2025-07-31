@@ -14,8 +14,8 @@ def getList(root, str_v, str_list):
     if not root.left and not root.right:
         return str_list + [str_v]
 
-    left = getList(root.left, str_v, [])
-    right = getList(root.right, str_v, [])
+    left = getList(root.left, str_v, str_list)
+    right = getList(root.right, str_v, str_list)
 
     return left + right
 
