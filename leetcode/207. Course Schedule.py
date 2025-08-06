@@ -33,3 +33,36 @@ class Solution:
                 return False
 
         return True
+
+# from typing import List
+
+# class Solution:
+#     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+#         # Build adjacency list
+#         graph = [[] for _ in range(numCourses)]
+#         for course, prereq in prerequisites:
+#             graph[course].append(prereq)
+
+#         # 0 = unvisited, 1 = visiting, 2 = visited
+#         state = [0] * numCourses
+
+#         def dfs(course):
+#             if state[course] == 1:  # cycle detected
+#                 return False
+#             if state[course] == 2:  # already checked
+#                 return True
+
+#             state[course] = 1  # mark as visiting
+#             for prereq in graph[course]:
+#                 if not dfs(prereq):
+#                     return False
+
+#             state[course] = 2  # mark as visited
+#             return True
+
+#         for i in range(numCourses):
+#             if not dfs(i):
+#                 return False
+
+#         return True
+
