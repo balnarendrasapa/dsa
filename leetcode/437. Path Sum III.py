@@ -16,14 +16,16 @@ class Solution:
         self.pathCounts(root.left, parentSum + root.val, targetSum)
         self.pathCounts(root.right, parentSum + root.val, targetSum)
 
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+    def pathSum(self, root, targetSum):
         if not root:
             return 0
 
+        count_here = 0
         self.count = 0
         self.pathCounts(root, 0, targetSum)
+        count_here += self.count
 
-        self.count += self.pathSum(root.left, targetSum)
-        self.count += self.pathSum(root.right, targetSum)
+        count_here += self.pathSum(root.left, targetSum)
+        count_here += self.pathSum(root.right, targetSum)
 
-        return self.count
+        return count_here
