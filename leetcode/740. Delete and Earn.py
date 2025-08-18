@@ -12,7 +12,7 @@ class Solution:
 
         for i in range(1, len(t)):
             points = c[t[i]] * t[i]
-            if t[i] == t[i - 1] + 1:
+            if t[i] == t[i - 1] + 1: # check if the current element and the previous element are consecutive or not.
                 dp[i] = max(dp[i - 1], (dp[i - 2] + points if i - 2 >= 0 else points))
             else:
                 dp[i] = dp[i - 1] + points
