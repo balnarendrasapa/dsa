@@ -1,0 +1,21 @@
+class Solution:
+    def sortMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        n = len(grid)
+        diag = defaultdict(list)
+        
+        for i in range(n):
+            for j in range(n):
+                diag[i - j].append(grid[i][j])
+
+        for d in diag:
+            if d >= 0:
+                diag[d].sort(reverse = True)
+            else:
+                diag[d].sort()
+
+        for i in range(n):
+            for j in range(n):
+                grid[i][j] = diag[i - j].pop(0)
+
+
+        return grid
