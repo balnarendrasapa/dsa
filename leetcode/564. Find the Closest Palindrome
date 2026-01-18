@@ -1,0 +1,26 @@
+class Solution:
+    def nearestPalindromic(self, n: str) -> str:
+        length = len(n)
+        num = int(n)
+        candidate = set()
+
+        candidate.add(10 ** (length - 1) - 1)
+        candidate.add(10 ** length + 1)
+
+        first_half = int(n[:(length + 1) // 2])
+
+        for diff in (-1, 0, 1):
+            new_half = str(first_half + diff)
+
+            if length % 2 == 0:
+                pal = int(new_half + new_half[::-1])
+            else:
+                pal = int(new_half + new_half[:-1][::-1])
+
+            candidate.add(pal)
+
+        candidate.discard(num)
+
+        return str(
+            min(candidate, key=lambda x: (abs(x - num), x))
+        )
